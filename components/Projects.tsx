@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -40,17 +41,11 @@ function EcommerceVisual() {
       />
       <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-blue-500/15 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-400/10 rounded-full blur-2xl" />
-      <div className="absolute bottom-16 left-8">
-        <div className="font-mono text-7xl font-black text-blue-400/10 leading-none select-none">
-          3wks
-        </div>
-      </div>
     </div>
   );
 }
 
 const visuals = { pos: PosVisual, ecommerce: EcommerceVisual };
-const accentColors = { pos: "bg-amber-400", ecommerce: "bg-blue-400" };
 
 export function Projects() {
   const { lang } = useLanguage();
@@ -75,15 +70,15 @@ export function Projects() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6">
           {PROJECTS.map((project, index) => {
             const t = project[lang];
             const Visual = visuals[project.visual];
-            const dot = accentColors[project.visual];
 
             return (
               <motion.div
                 key={project.slug}
+                className="flex flex-col h-full"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -94,37 +89,39 @@ export function Projects() {
                   delay: index * 0.1,
                 }}
               >
-                <Link href={`/projects/${project.slug}`} className="group block">
-                  <div className="relative overflow-hidden rounded-2xl border border-border/60 h-[400px] flex flex-col transition-all duration-300 group-hover:border-border group-hover:shadow-lg group-hover:shadow-black/20">
+                <Link href={`/projects/${project.slug}`} className="group block h-full">
+                  <div className="relative overflow-hidden rounded-2xl border border-border/60 flex flex-col h-full transition-all duration-300 group-hover:border-border group-hover:shadow-lg group-hover:shadow-black/20">
                     {/* Visual */}
-                    <div className="relative flex-1 overflow-hidden">
-                      <Visual />
+                    <div className="relative h-32 sm:h-44 md:h-52 overflow-hidden shrink-0">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={t.title}
+                          fill
+                          className="object-cover object-center"
+                          sizes="(max-width: 768px) 100vw, 400px"
+                        />
+                      ) : (
+                        <Visual />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                      {/* Stat badge */}
-                      <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-black/40 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1">
-                        <span className={`w-1.5 h-1.5 rounded-full ${dot}`} />
-                        <span className="text-xs font-mono text-white/75">
-                          {t.stats[0].value}
-                        </span>
-                      </div>
                     </div>
 
                     {/* Content */}
-                    <div className="p-5 border-t border-border/40 flex flex-col gap-2.5">
+                    <div className="p-3 sm:p-5 border-t border-border/40 flex flex-col gap-2 sm:gap-2.5">
                       <div>
-                        <p className="text-xs font-mono text-muted-foreground mb-0.5">
+                        <p className="text-[10px] sm:text-xs font-mono text-muted-foreground mb-0.5">
                           {t.company} · {t.period}
                         </p>
-                        <h3 className="text-lg font-bold text-foreground leading-snug">
+                        <h3 className="text-sm sm:text-lg font-bold text-foreground leading-snug">
                           {t.title}
                         </h3>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                      <p className="hidden sm:block text-sm text-muted-foreground leading-relaxed line-clamp-2">
                         {t.tagline}
                       </p>
                       <div className="flex items-center justify-between mt-1">
-                        <div className="flex flex-wrap gap-1.5">
+                        <div className="hidden sm:flex flex-wrap gap-1.5">
                           {project.tags.slice(0, 3).map((tag) => (
                             <span
                               key={tag}
@@ -139,7 +136,7 @@ export function Projects() {
                             </span>
                           )}
                         </div>
-                        <span className="flex items-center gap-1 text-xs text-muted-foreground group-hover:text-blue-400 transition-colors shrink-0">
+                        <span className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground group-hover:text-blue-400 transition-colors shrink-0">
                           {lang === "es" ? "Ver más" : "View"}
                           <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
                         </span>

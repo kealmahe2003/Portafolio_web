@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, ExternalLink, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -38,9 +39,6 @@ function EcommerceVisual() {
       />
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/12 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-400/8 rounded-full blur-2xl" />
-      <div className="absolute bottom-8 left-8 font-mono text-[100px] font-black text-blue-400/8 leading-none select-none">
-        E-COM
-      </div>
     </div>
   );
 }
@@ -87,7 +85,18 @@ export function ProjectDetail({ project }: { project: Project }) {
           transition={{ type: "spring", stiffness: 300, damping: 28 }}
           className="relative w-full h-56 sm:h-72 rounded-2xl overflow-hidden border border-border/60 mb-10"
         >
-          <Visual />
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={t.title}
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 960px"
+              priority
+            />
+          ) : (
+            <Visual />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
           {/* Company + period overlay */}

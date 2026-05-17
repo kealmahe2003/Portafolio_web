@@ -12,6 +12,7 @@ export type ProjectLang = {
 export type Project = {
   slug: string;
   visual: "pos" | "ecommerce";
+  image?: string;
   tags: string[];
   liveUrl?: string;
   es: ProjectLang;
@@ -22,6 +23,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "crepes-kaffee",
     visual: "pos",
+    image: "/crepes-kaffee.jpeg",
     tags: ["React 18", "Node.js", "Express", "TypeScript", "PostgreSQL", "Prisma ORM", "Socket.IO", "JWT", "TanStack Query", "Vitest", "Jest"],
     es: {
       title: "Sistema POS",
@@ -75,6 +77,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "frenchie-cases",
     visual: "ecommerce",
+    image: "/logo-frenchie.png",
     liveUrl: "https://frenchiecases.vercel.app",
     tags: ["Next.js 16", "React 19", "TypeScript", "Node.js", "Express", "Prisma ORM", "PostgreSQL", "MercadoPago", "Zod", "Resend", "Jest", "Vitest", "Vercel", "Railway"],
     es: {
