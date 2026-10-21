@@ -20,9 +20,14 @@ const es = {
     title: "Full Stack Developer",
     value:
       "Construyo software para resolver problemas reales, desde los requisitos hasta producción.",
-    location: "Valle del Cauca, Colombia",
     viewProjects: "Ver proyectos",
     downloadCv: "Descargar CV",
+    photoAlt: "Retrato de Kevin Alexander Marín",
+    facts: {
+      location: { label: "Ubicación", value: "Zarzal, Valle del Cauca, Colombia", detail: "" },
+      studies: { label: "Estudios", value: "Ingeniería de Sistemas · Universidad del Valle", detail: "2021 – Actualidad" },
+      experience: { label: "Experiencia", value: "Full Stack Developer · Crepes & Kaffee", detail: "Sep. 2025 – Actualidad" },
+    },
   },
   featured: {
     eyebrow: "Proyecto principal",
@@ -99,9 +104,14 @@ const en: Dictionary = {
     title: "Full Stack Developer",
     value:
       "I build software that solves real-world problems, from requirements gathering to deployment and maintenance.",
-    location: "Valle del Cauca, Colombia",
     viewProjects: "View projects",
     downloadCv: "Download CV",
+    photoAlt: "Portrait of Kevin Alexander Marín",
+    facts: {
+      location: { label: "Location", value: "Zarzal, Valle del Cauca, Colombia", detail: "" },
+      studies: { label: "Education", value: "Systems Engineering · Universidad del Valle", detail: "2021 – Present" },
+      experience: { label: "Experience", value: "Full Stack Developer · Crepes & Kaffee", detail: "Sep 2025 – Present" },
+    },
   },
   featured: {
     eyebrow: "Featured project",

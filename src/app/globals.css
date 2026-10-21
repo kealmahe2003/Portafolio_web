@@ -112,3 +112,22 @@ html.theme-transition::view-transition-new(root) {
     animation: none !important;
   }
 }
+
+/* Hero backdrop: accent glow plus a faint grid that fades out, CSS only. */
+.hero-backdrop {
+  background:
+    radial-gradient(55% 70% at 85% 20%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 70%),
+    radial-gradient(40% 50% at 0% 100%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 70%);
+}
+
+.hero-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(70% 60% at 70% 30%, black, transparent);
+  opacity: 0.5;
+}

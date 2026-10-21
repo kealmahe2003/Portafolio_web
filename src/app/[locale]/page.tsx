@@ -6,6 +6,8 @@ import { hasLocale, locales, projectsPath } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { links, projects, skills } from "@/data/projects";
 import { ProjectCard, StackList, StatusBadge } from "@/components/projects/project-card";
+import { siNestjs, siNodedotjs, siPostgresql, siReact, siTypescript } from "simple-icons";
+import portrait from "../../../public/images/profile/kevin.png";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -16,6 +18,15 @@ export async function generateMetadata({ params }: PageProps<"/[locale]">): Prom
     },
   };
 }
+
+// Inline icon paths (map pin, graduation cap, briefcase); brand logos come from simple-icons.
+const factIcons = {
+  location: "M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z",
+  studies: "M2 9l10-5 10 5-10 5L2 9zM6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5M22 9v6",
+  experience: "M3 8h18v11H3zM8 8V5h8v3M3 13h18",
+};
+
+const heroStack = [siReact, siTypescript, siNodedotjs, siNestjs, siPostgresql];
 
 const eyebrow = "font-mono text-xs uppercase tracking-widest text-muted";
 const sectionTitle = `mb-6 ${eyebrow}`;
@@ -28,19 +39,57 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
 
   return (
     <>
-      <section className="py-20 sm:py-28">
-        <p className="font-mono text-sm text-muted">{dict.hero.location}</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-6xl">Kevin Alexander Marín</h1>
-        <p className="mt-3 text-xl text-accent sm:text-2xl">{dict.hero.title}</p>
-        <p className="mt-6 max-w-2xl text-lg text-muted">{dict.hero.value}</p>
-        <p className="mt-4 font-mono text-sm text-muted">React · TypeScript · Node.js · PostgreSQL</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link href={`/${locale}#projects`} className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:opacity-90">
-            {dict.hero.viewProjects}
-          </Link>
-          <a href="/cv.pdf" download className="rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-surface">
-            {dict.hero.downloadCv}
-          </a>
+      <section className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-surface sm:mt-10">
+        <div className="hero-backdrop pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="relative grid items-center gap-8 p-6 sm:p-10 lg:grid-cols-[1fr_19rem] lg:gap-12 lg:p-12">
+          <Image
+            src={portrait}
+            alt={dict.hero.photoAlt}
+            placeholder="blur"
+            preload
+            sizes="(min-width: 1024px) 19rem, 8rem"
+            className="aspect-[4/5] w-32 rounded-2xl border border-border object-cover shadow-2xl shadow-black/20 lg:col-start-2 lg:row-start-1 lg:w-full"
+          />
+          <div className="lg:col-start-1 lg:row-start-1">
+            <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">Kevin Alexander Marín</h1>
+            <p className="mt-3 text-xl text-accent sm:text-2xl">{dict.hero.title}</p>
+            <p className="mt-6 max-w-xl text-lg text-muted">{dict.hero.value}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href={`/${locale}#projects`} className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90">
+                {dict.hero.viewProjects}
+              </Link>
+              <a href="/cv.pdf" download className="rounded-md border border-border bg-background/50 px-4 py-2 text-sm font-medium transition-colors hover:bg-background">
+                {dict.hero.downloadCv} ↓
+              </a>
+            </div>
+            <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted">
+              {heroStack.map((icon) => (
+                <li key={icon.title} className="flex items-center gap-2 transition-colors hover:text-foreground">
+                  <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden="true">
+                    <path d={icon.path} />
+                  </svg>
+                  {icon.title}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <dl className="grid gap-5 border-t border-border pt-8 sm:grid-cols-3 lg:col-span-2">
+            {(["location", "studies", "experience"] as const).map((key) => {
+              const fact = dict.hero.facts[key];
+              return (
+                <div key={key}>
+                  <dt className="flex items-center gap-3 font-medium">
+                    <svg viewBox="0 0 24 24" className="size-5 shrink-0 text-accent" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d={factIcons[key]} />
+                    </svg>
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-1 pl-8 text-sm text-muted">{fact.value}</dd>
+                  {fact.detail && <dd className="pl-8 font-mono text-xs text-muted">{fact.detail}</dd>}
+                </div>
+              );
+            })}
+          </dl>
         </div>
       </section>
 
