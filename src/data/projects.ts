@@ -97,7 +97,7 @@ export const projects: Project[] = [
     status: "academic",
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Recharts", "Zustand", "Gemini API"],
     summary: {
-      es: "App web educativa con calculadoras financieras, wiki de conceptos y asistente con IA. Proyecto en equipo de 10 personas en la Universidad del Valle: creé la primera versión y el despliegue, rediseñé la interfaz con tema claro/oscuro conecté el chatbot a la versión actualizada de la API de Gemini y añadí la exportación a Excel.",
+      es: "App web educativa con calculadoras financieras, wiki de conceptos y asistente con IA. Proyecto en equipo de 10 personas en la Universidad del Valle: creé la primera versión y el despliegue, rediseñé la interfaz con tema claro/oscuro, conecté el chatbot a la versión actualizada de la API de Gemini y añadí la exportación a Excel.",
       en: "Educational web app with financial calculators, a concepts wiki and an AI assistant. A 10-person team project at Universidad del Valle: I built the first version and deployment, redesigned the UI with light/dark themes, connected the chatbot to the updated Gemini API, and added Excel export.",
     },
     links: {
