@@ -82,7 +82,11 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
 
       <section id="about" className="scroll-mt-20 py-12">
         <h2 className={sectionTitle}>{dict.about.title}</h2>
-        <p className="max-w-2xl text-lg leading-relaxed">{dict.about.body}</p>
+        <div className="max-w-2xl space-y-4 text-lg leading-relaxed">
+          {dict.about.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </section>
 
       <section className="py-12">

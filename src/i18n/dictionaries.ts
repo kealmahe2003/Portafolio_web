@@ -43,7 +43,10 @@ const es = {
   },
   about: {
     title: "Sobre mí",
-    body: "Soy Full Stack Developer en Crepes & Kaffee desde septiembre de 2025 y estudiante de último año de Ingeniería de Sistemas en la Universidad del Valle (finalización prevista en 2027). Me interesa resolver problemas reales de negocio de punta a punta: requisitos, diseño, desarrollo, despliegue y soporte.",
+    paragraphs: [
+      "Soy Full Stack Developer en Crepes & Kaffee desde septiembre de 2025 y estudiante de último año de Ingeniería de Sistemas en la Universidad del Valle (finalización prevista en 2027). Me interesa resolver problemas reales de negocio de punta a punta: requisitos, diseño, desarrollo, despliegue y soporte.",
+      "Soy una persona curiosa, analítica y apasionada por la tecnología, que disfruta aprender, experimentar y convertir ideas en soluciones reales. Me motiva entender cómo funcionan las cosas, encontrar mejores formas de hacerlas y asumir nuevos retos que me permitan crecer tanto personal como profesionalmente. En el desarrollo de software encuentro una forma de combinar mi pensamiento lógico, mi creatividad y mi interés por construir experiencias útiles para las personas.",
+    ],
   },
   skills: {
     title: "Stack tecnológico",
@@ -119,7 +122,10 @@ const en: Dictionary = {
   },
   about: {
     title: "About",
-    body: "I've been a Full Stack Developer at Crepes & Kaffee since September 2025, and I'm a final-year Systems Engineering student at Universidad del Valle (expected graduation 2027). I enjoy solving real business problems end to end: requirements, design, development, deployment and support.",
+    paragraphs: [
+      "I've been a Full Stack Developer at Crepes & Kaffee since September 2025, and I'm a final-year Systems Engineering student at Universidad del Valle (expected graduation 2027). I enjoy solving real business problems end to end: requirements, design, development, deployment and support.",
+      "I'm a curious, analytical person with a passion for technology. I enjoy learning, experimenting and turning ideas into real solutions. I'm driven by understanding how things work, finding better ways to do them, and taking on new challenges that help me grow both personally and professionally. Software development is where I get to combine logical thinking, creativity and my interest in building experiences that are genuinely useful to people.",
+    ],
   },
   skills: {
     title: "Tech stack",
