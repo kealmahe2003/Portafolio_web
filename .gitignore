@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# herramientas locales de desarrollo con IA (no se publican)
+graphify-out/
+.claude/
+CLAUDE.md
+AGENTS.md
+ponytail.md
+portafolio_kevin_resumen.md
