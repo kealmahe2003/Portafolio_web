@@ -21,6 +21,20 @@ export function ProjectCard({ project, locale, dict }: { project: Project; local
       </div>
       <p className="text-sm text-muted">{project.summary[locale]}</p>
       <StackList stack={project.stack} />
+      {project.links && (
+        <p className="flex gap-4 text-sm font-medium">
+          {project.links.demo && (
+            <a href={project.links.demo} className="text-accent hover:underline">
+              {dict.projects.demo} ↗
+            </a>
+          )}
+          {project.links.repo && (
+            <a href={project.links.repo} className="text-accent hover:underline">
+              {dict.projects.repo} ↗
+            </a>
+          )}
+        </p>
+      )}
     </article>
   );
 }

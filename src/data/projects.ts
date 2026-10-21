@@ -7,9 +7,10 @@ type Localized = Record<Locale, string>;
 export type Project = {
   slug: string;
   name: string;
-  status?: "production" | "inProgress";
+  status?: "production" | "inProgress" | "academic";
   stack: string[];
   summary: Localized;
+  links?: { demo?: string; repo?: string };
   image?: { src: StaticImageData; alt: Localized };
   caseStudy?: { title: Localized; body: Localized }[];
 };
@@ -89,6 +90,20 @@ export const projects: Project[] = [
         },
       },
     ],
+  },
+  {
+    slug: "fincalc",
+    name: "FinCalc — Ingeniería Económica",
+    status: "academic",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Recharts", "Zustand", "Gemini API"],
+    summary: {
+      es: "App web educativa con calculadoras financieras, wiki de conceptos y asistente con IA. Proyecto en equipo de 10 personas en la Universidad del Valle: creé la primera versión y el despliegue, rediseñé la interfaz con tema claro/oscuro conecté el chatbot a la versión actualizada de la API de Gemini y añadí la exportación a Excel.",
+      en: "Educational web app with financial calculators, a concepts wiki and an AI assistant. A 10-person team project at Universidad del Valle: I built the first version and deployment, redesigned the UI with light/dark themes, connected the chatbot to the updated Gemini API, and added Excel export.",
+    },
+    links: {
+      demo: "https://ing-economica-sistemas.vercel.app/",
+      repo: "https://github.com/kealmahe2003/Proyecto-Ing-economica",
+    },
   },
   {
     slug: "pixelpocket",

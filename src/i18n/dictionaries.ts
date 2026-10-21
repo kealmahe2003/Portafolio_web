@@ -35,7 +35,10 @@ const es = {
     status: {
       production: "En producción",
       inProgress: "En desarrollo",
+      academic: "Académico",
     },
+    demo: "Demo",
+    repo: "Código",
     stack: "Stack",
     back: "Volver a proyectos",
   },
@@ -109,7 +112,10 @@ const en: Dictionary = {
     status: {
       production: "In production",
       inProgress: "In development",
+      academic: "Academic",
     },
+    demo: "Demo",
+    repo: "Code",
     stack: "Stack",
     back: "Back to projects",
   },
