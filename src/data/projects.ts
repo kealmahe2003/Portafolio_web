@@ -7,7 +7,7 @@ type Localized = Record<Locale, string>;
 export type Project = {
   slug: string;
   name: string;
-  status?: "production" | "inProgress" | "academic";
+  status?: "production" | "academic";
   stack: string[];
   summary: Localized;
   links?: { demo?: string; repo?: string };
@@ -103,16 +103,6 @@ export const projects: Project[] = [
     links: {
       demo: "https://ing-economica-sistemas.vercel.app/",
       repo: "https://github.com/kealmahe2003/Proyecto-Ing-economica",
-    },
-  },
-  {
-    slug: "pixelpocket",
-    name: "PixelPocket",
-    status: "inProgress",
-    stack: ["React Native", "Expo", "TypeScript", "Supabase"],
-    summary: {
-      es: "Aplicación móvil con React Native, Expo, TypeScript y Supabase.",
-      en: "Mobile app built with React Native, Expo, TypeScript and Supabase.",
     },
   },
 ];

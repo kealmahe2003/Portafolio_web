@@ -53,6 +53,49 @@ body {
   border-radius: 4px;
 }
 
+/* Language switch: cross-document view transition (no JS). The header keeps its place while the
+   page content fades out and the new language slides in. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+html:not(.theme-transition) [data-vt="header"] {
+  view-transition-name: site-header;
+}
+
+::view-transition-old(root) {
+  animation: 180ms ease-in both vt-out;
+}
+
+::view-transition-new(root) {
+  animation: 320ms cubic-bezier(0.2, 0, 0, 1) 60ms both vt-in;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+    filter: blur(2px);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(2px);
+  }
+}
+
+/* Theme switch: the circular reveal is animated from ThemeToggle; disable the default crossfade. */
+html.theme-transition::view-transition-old(root),
+html.theme-transition::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -62,5 +105,10 @@ body {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

@@ -12,7 +12,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
   ] as const;
 
   return (
-    <header className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
+    <header data-vt="header" className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-5">
         <Link href={`/${locale}`} className="font-mono text-sm font-semibold">
           kevin.marín

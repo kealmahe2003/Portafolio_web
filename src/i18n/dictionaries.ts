@@ -34,7 +34,6 @@ const es = {
     allTitle: "Proyectos",
     status: {
       production: "En producción",
-      inProgress: "En desarrollo",
       academic: "Académico",
     },
     demo: "Demo",
@@ -111,7 +110,6 @@ const en: Dictionary = {
     allTitle: "Projects",
     status: {
       production: "In production",
-      inProgress: "In development",
       academic: "Academic",
     },
     demo: "Demo",
