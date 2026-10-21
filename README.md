@@ -78,7 +78,7 @@ npm run dev      # http://localhost:3000
 
 | Variable | Descripción |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | URL pública del sitio (p. ej. `https://tu-dominio.com`). Se usa en URL canónicas, `sitemap.xml` y Open Graph. |
+| `NEXT_PUBLIC_SITE_URL` | Opcional. URL pública del sitio para un dominio propio (p. ej. `https://tu-dominio.com`). Se usa en URL canónicas, `sitemap.xml` y Open Graph. En Vercel, si no se define, se usa automáticamente el dominio de producción (`VERCEL_PROJECT_PRODUCTION_URL`). |
 
 ## Contacto
 
