@@ -48,7 +48,9 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             placeholder="blur"
             preload
             quality={90}
-            sizes="(min-width: 1024px) 19rem, 8rem"
+            // Desktop asks for 1.5x its 19rem slot so the browser always downsamples (sharp) instead of
+            // resampling a near-same-size copy (soft) on fractional scales like Windows at 125%.
+            sizes="(min-width: 1024px) 456px, 8rem"
             className="aspect-[4/5] w-32 rounded-2xl border border-border object-cover shadow-2xl shadow-black/20 lg:col-start-2 lg:row-start-1 lg:w-full"
           />
           <div className="lg:col-start-1 lg:row-start-1">
