@@ -7,7 +7,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { links, projects, skills } from "@/data/projects";
 import { ProjectCard, StackList, StatusBadge } from "@/components/projects/project-card";
 import { siNestjs, siNodedotjs, siPostgresql, siReact, siTypescript } from "simple-icons";
-import portrait from "../../../public/images/profile/kevin.png";
+import portrait from "../../../public/images/profile/kevin-marin.webp";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -47,6 +47,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             alt={dict.hero.photoAlt}
             placeholder="blur"
             preload
+            quality={90}
             sizes="(min-width: 1024px) 19rem, 8rem"
             className="aspect-[4/5] w-32 rounded-2xl border border-border object-cover shadow-2xl shadow-black/20 lg:col-start-2 lg:row-start-1 lg:w-full"
           />

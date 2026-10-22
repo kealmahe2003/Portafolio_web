@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
+  // 90 is used for the profile portrait so it keeps detail; 75 (default) for everything else.
+  images: { qualities: [75, 90] },
   turbopack: {
     rules: {
       "*.css": {
