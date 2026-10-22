@@ -5,8 +5,6 @@ const es = {
     title: "Kevin Alexander Marín — Full Stack Developer",
     description:
       "Full Stack Developer en Valle del Cauca, Colombia. Construyo software para resolver problemas reales, desde los requisitos hasta producción.",
-    projectsTitle: "Proyectos",
-    projectsDescription: "Proyectos y casos de estudio de Kevin Alexander Marín.",
   },
   nav: {
     projects: "Proyectos",
@@ -36,7 +34,6 @@ const es = {
   },
   projects: {
     title: "Otros proyectos",
-    allTitle: "Proyectos",
     status: {
       production: "En producción",
       academic: "Académico",
@@ -89,8 +86,6 @@ const en: Dictionary = {
     title: "Kevin Alexander Marín — Full Stack Developer",
     description:
       "Full Stack Developer based in Valle del Cauca, Colombia. I build software that solves real-world problems, from requirements gathering to deployment.",
-    projectsTitle: "Projects",
-    projectsDescription: "Projects and case studies by Kevin Alexander Marín.",
   },
   nav: {
     projects: "Projects",
@@ -120,7 +115,6 @@ const en: Dictionary = {
   },
   projects: {
     title: "More projects",
-    allTitle: "Projects",
     status: {
       production: "In production",
       academic: "Academic",

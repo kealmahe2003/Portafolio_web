@@ -5,7 +5,6 @@ import { caseStudies } from "@/data/projects";
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     (l: Locale) => `/${l}`,
-    (l: Locale) => projectsPath(l),
     ...caseStudies.map(({ slug }) => (l: Locale) => projectsPath(l, slug)),
   ];
 

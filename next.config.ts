@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/", destination: "/es", permanent: false },
+      // There is no projects listing page: the home's #projects section lists them all.
+      { source: "/es/proyectos", destination: "/es#projects", permanent: true },
+      { source: "/es/projects", destination: "/es#projects", permanent: true },
+      { source: "/en/projects", destination: "/en#projects", permanent: true },
       // Spanish URLs use /proyectos; keep a single canonical URL per page.
       { source: "/es/projects/:path*", destination: "/es/proyectos/:path*", permanent: true },
     ];

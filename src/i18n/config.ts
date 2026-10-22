@@ -6,15 +6,12 @@ export const hasLocale = (value: string): value is Locale =>
 
 const projectsSegment: Record<Locale, string> = { es: "proyectos", en: "projects" };
 
-export const projectsPath = (locale: Locale, slug?: string) =>
-  `/${locale}/${projectsSegment[locale]}${slug ? `/${slug}` : ""}`;
+export const projectsPath = (locale: Locale, slug: string) => `/${locale}/${projectsSegment[locale]}/${slug}`;
 
 // Equivalent page in the other language; falls back to that language's home.
 export function switchLocalePath(pathname: string, to: Locale) {
   const [, , section, slug] = pathname.split("/");
-  return Object.values(projectsSegment).includes(section)
-    ? projectsPath(to, slug)
-    : `/${to}`;
+  return slug && Object.values(projectsSegment).includes(section) ? projectsPath(to, slug) : `/${to}`;
 }
 
 // Vercel sets VERCEL_PROJECT_PRODUCTION_URL at build time; NEXT_PUBLIC_SITE_URL overrides it for a custom domain.

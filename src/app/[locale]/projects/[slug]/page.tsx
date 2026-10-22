@@ -33,7 +33,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/pro
 
   return (
     <article className="py-16">
-      <Link href={projectsPath(locale)} className="font-mono text-sm text-muted hover:text-foreground">
+      <Link href={`/${locale}#projects`} className="font-mono text-sm text-muted hover:text-foreground">
         ← {dict.projects.back}
       </Link>
       <header className="mt-8 border-b border-border pb-10">
