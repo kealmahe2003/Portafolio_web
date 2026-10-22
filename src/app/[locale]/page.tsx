@@ -41,22 +41,25 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
     <>
       <section className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-surface sm:mt-10">
         <div className="hero-backdrop pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div className="relative grid items-center gap-8 p-6 sm:p-10 lg:grid-cols-[1fr_19rem] lg:gap-12 lg:p-12">
+        {/* DOM order is the mobile order (name → photo → pitch); on desktop the photo spans the right column. */}
+        <div className="relative grid gap-8 p-6 sm:p-10 lg:grid-cols-[1fr_19rem] lg:gap-x-12 lg:gap-y-0 lg:p-12">
+          <div className="lg:col-start-1 lg:row-start-1 lg:self-end">
+            <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">Kevin Alexander Marín</h1>
+            <p className="mt-3 text-xl text-accent sm:text-2xl">{dict.hero.title}</p>
+          </div>
           <Image
             src={portrait}
             alt={dict.hero.photoAlt}
             placeholder="blur"
             preload
             quality={90}
-            // Desktop asks for 1.5x its 19rem slot so the browser always downsamples (sharp) instead of
+            // Ask for ~1.5x the rendered slot so the browser always downsamples (sharp) instead of
             // resampling a near-same-size copy (soft) on fractional scales like Windows at 125%.
-            sizes="(min-width: 1024px) 456px, 8rem"
-            className="aspect-[4/5] w-32 rounded-2xl border border-border object-cover shadow-2xl shadow-black/20 lg:col-start-2 lg:row-start-1 lg:w-full"
+            sizes="(min-width: 1024px) 456px, (min-width: 640px) 384px, 85vw"
+            className="aspect-[4/5] w-full max-w-sm rounded-2xl border border-border object-cover shadow-2xl shadow-black/20 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:self-center"
           />
-          <div className="lg:col-start-1 lg:row-start-1">
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">Kevin Alexander Marín</h1>
-            <p className="mt-3 text-xl text-accent sm:text-2xl">{dict.hero.title}</p>
-            <p className="mt-6 max-w-xl text-lg text-muted">{dict.hero.value}</p>
+          <div className="lg:col-start-1 lg:row-start-2">
+            <p className="max-w-xl text-lg text-muted lg:mt-6">{dict.hero.value}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href={`/${locale}#projects`} className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90">
                 {dict.hero.viewProjects}
@@ -76,7 +79,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
               ))}
             </ul>
           </div>
-          <dl className="grid gap-5 border-t border-border pt-8 sm:grid-cols-3 lg:col-span-2">
+          <dl className="grid gap-5 border-t border-border pt-8 sm:grid-cols-3 lg:col-span-2 lg:mt-12">
             {(["location", "studies", "experience"] as const).map((key) => {
               const fact = dict.hero.facts[key];
               return (
