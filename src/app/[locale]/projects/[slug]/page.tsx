@@ -58,7 +58,11 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/pro
       </header>
       <div className="max-w-2xl">
         {project.caseStudy.map((section) => (
-          <section key={section.title.en} className="border-b border-border py-8 last:border-0">
+          <section
+            key={section.title.en}
+            id={section.title.en.toLowerCase().replace(/\W+/g, "-")}
+            className="scroll-mt-20 border-b border-border py-8 last:border-0"
+          >
             <h2 className="text-lg font-semibold">{section.title[locale]}</h2>
             <p className="mt-3 leading-relaxed text-muted">{section.body[locale]}</p>
           </section>

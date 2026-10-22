@@ -138,7 +138,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
         </div>
       </section>
 
-      <section className="py-12">
+      <section id="skills" className="scroll-mt-20 py-12">
         <h2 className={sectionTitle}>{dict.skills.title}</h2>
         <dl className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {Object.entries(skills).map(([group, items]) => (
@@ -150,7 +150,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
         </dl>
       </section>
 
-      <section className="py-12">
+      <section id="experience" className="scroll-mt-20 py-12">
         <h2 className={sectionTitle}>{dict.experience.title}</h2>
         <ol className="border-l border-border">
           {dict.experience.items.map((item, i) => (
