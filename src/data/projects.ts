@@ -20,7 +20,7 @@ export const projects: Project[] = [
     slug: "pos",
     name: "POS Crepes & Kaffee",
     status: "production",
-    stack: ["HTML", "CSS", "JavaScript", "React", "TypeScript", "NestJS", "Prisma", "PostgreSQL"],
+    stack: ["HTML", "CSS", "JavaScript", "React", "TypeScript", "NestJS", "Prisma", "PostgreSQL", "Vitest"],
     summary: {
       es: "Sistema POS que reemplazó las comandas en papel de un restaurante. La versión 1, en HTML, CSS y JavaScript puro, está en producción y se usa a diario en el local; la versión 2, con React, TypeScript, NestJS, Prisma y PostgreSQL, está en desarrollo.",
       en: "POS system that replaced a restaurant's paper order tickets. Version 1, built with plain HTML, CSS and JavaScript, is in production and used daily at the restaurant; version 2, with React, TypeScript, NestJS, Prisma and PostgreSQL, is in development.",
@@ -78,8 +78,8 @@ export const projects: Project[] = [
       {
         title: { es: "Calidad", en: "Quality" },
         body: {
-          es: "Valido los endpoints con Postman y documento el sistema en los repositorios. En mis propias pruebas, antes del lanzamiento, detecté un error en los pagos divididos: los pagos con efectivo y transferencia se registraban como efectivo en la caja. Lo corregí sin afectar la operación real.",
-          en: "I validate endpoints with Postman and keep technical documentation in the repositories. In my own testing before launch, I caught a bug in split payments: payments made with cash and bank transfer were recorded as cash in the register. I fixed it without affecting real operations.",
+          es: "Valido los endpoints con Postman y documento el sistema en los repositorios. La versión 2 tiene pruebas automatizadas con Vitest: unitarias en el frontend y el backend, y de extremo a extremo en la API. En mis propias pruebas, antes del lanzamiento, detecté un error en los pagos divididos: los pagos con efectivo y transferencia se registraban como efectivo en la caja. Lo corregí sin afectar la operación real.",
+          en: "I validate endpoints with Postman and keep technical documentation in the repositories. Version 2 has automated tests with Vitest: unit tests on the frontend and backend, and end-to-end tests for the API. In my own testing before launch, I caught a bug in split payments: payments made with cash and bank transfer were recorded as cash in the register. I fixed it without affecting real operations.",
         },
       },
       {
