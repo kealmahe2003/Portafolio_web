@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { hasLocale, locales, projectsPath } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { links, projects, skills } from "@/data/projects";
+import { links, projects } from "@/data/projects";
 import { ProjectCard, StackList, StatusBadge } from "@/components/projects/project-card";
 import { siNestjs, siNodedotjs, siPostgresql, siReact, siTypescript } from "simple-icons";
 import portrait from "../../../public/images/profile/kevin-marin.webp";
@@ -44,6 +44,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
         {/* DOM order is the mobile order (name → photo → pitch); on desktop the photo spans the right column. */}
         <div className="relative grid gap-8 p-6 sm:p-10 lg:grid-cols-[1fr_19rem] lg:gap-x-12 lg:gap-y-0 lg:p-12">
           <div className="lg:col-start-1 lg:row-start-1 lg:self-end">
+            <p className="mb-4 font-mono text-xs text-accent">{dict.hero.availability}</p>
             <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">Kevin Alexander Marín</h1>
             <p className="mt-3 text-xl text-accent sm:text-2xl">{dict.hero.title}</p>
           </div>
@@ -142,14 +143,17 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
+        <p className="mt-6 text-sm text-muted">
+          <span className="font-medium text-foreground">{dict.about.languages.label}:</span> {dict.about.languages.value}
+        </p>
       </section>
 
       <section id="skills" className="scroll-mt-20 py-12">
         <h2 className={sectionTitle}>{dict.skills.title}</h2>
         <dl className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {Object.entries(skills).map(([group, items]) => (
-            <div key={group}>
-              <dt className="mb-2 text-sm font-medium">{dict.skills.groups[group as keyof typeof skills]}</dt>
+          {dict.skills.groups.map(({ label, items }) => (
+            <div key={label}>
+              <dt className="mb-2 text-sm font-medium">{label}</dt>
               <dd className="text-sm text-muted">{items.join(" · ")}</dd>
             </div>
           ))}
@@ -165,6 +169,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
               <p className="font-mono text-xs text-muted">{item.period}</p>
               <p className={i === 0 ? "mt-1 font-semibold" : "mt-1 font-medium"}>{item.role}</p>
               <p className="text-sm text-muted">{item.place}</p>
+              {item.detail && <p className="mt-1 max-w-2xl text-sm text-muted">{item.detail}</p>}
             </li>
           ))}
         </ol>
@@ -173,6 +178,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <section id="contact" className="scroll-mt-20 py-16">
         <h2 className={sectionTitle}>{dict.contact.title}</h2>
         <p className="text-2xl font-semibold">{dict.contact.body}</p>
+        <p className="mt-3 max-w-2xl text-muted">{dict.contact.availability}</p>
         <ul className="mt-6 flex flex-wrap gap-3 text-sm">
           <li>
             <a href={`mailto:${links.email}`} className="rounded-md bg-accent px-4 py-2 font-medium text-accent-foreground hover:opacity-90">

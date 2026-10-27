@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     title: { default: meta.title, template: `%s · Kevin Alexander Marín` },
     description: meta.description,
     openGraph: { title: meta.title, description: meta.description, type: "website", locale },
+    twitter: { card: "summary", title: meta.title, description: meta.description },
   };
 }
 
